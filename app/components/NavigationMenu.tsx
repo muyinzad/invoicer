@@ -1,10 +1,17 @@
 import React from "react";
 import { View, TouchableOpacity, Text } from "react-native";
 import { useRouter } from "expo-router";
-import { Home, FileText, Users, Receipt, Plus } from "lucide-react-native";
+import {
+  Home,
+  FileText,
+  Users,
+  Receipt,
+  Plus,
+  Settings,
+} from "lucide-react-native";
 
 interface NavigationMenuProps {
-  activeTab?: "dashboard" | "invoices" | "clients" | "expenses";
+  activeTab?: "dashboard" | "invoices" | "clients" | "expenses" | "settings";
 }
 
 const NavigationMenu = ({ activeTab = "dashboard" }: NavigationMenuProps) => {
@@ -85,6 +92,22 @@ const NavigationMenu = ({ activeTab = "dashboard" }: NavigationMenuProps) => {
           className={`text-xs mt-1 ${activeTab === "expenses" ? "text-teal-600 dark:text-teal-500" : "text-gray-500 dark:text-gray-400"}`}
         >
           Expenses
+        </Text>
+      </TouchableOpacity>
+
+      {/* Settings Tab */}
+      <TouchableOpacity
+        className={`items-center ${activeTab === "settings" ? "opacity-100" : "opacity-60"}`}
+        onPress={() => navigateTo("/settings")}
+      >
+        <Settings
+          size={24}
+          color={activeTab === "settings" ? "#0D9488" : "#9CA3AF"}
+        />
+        <Text
+          className={`text-xs mt-1 ${activeTab === "settings" ? "text-teal-600 dark:text-teal-500" : "text-gray-500 dark:text-gray-400"}`}
+        >
+          Settings
         </Text>
       </TouchableOpacity>
     </View>
